@@ -5,6 +5,7 @@
 <table class="table table-striped table-hover">
   <thead>
     <tr>
+      <th>email</th>
       <th>Category</th>
       <th>Name</th>
       <th>Address</th>
@@ -15,7 +16,7 @@
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
-  
+        <td><%= link_to shop.user.email, shop, class: "widelink" %></td>
         <td><%= link_to shop.category.name, shop, class: "widelink" %></td>
         <td><%= link_to shop.name, shop, class: "widelink" %></td>
         <td><%= link_to shop.address, shop, class: "widelink" %></td>
