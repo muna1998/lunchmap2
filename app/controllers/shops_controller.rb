@@ -26,6 +26,7 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
+    @shop.user_id = current_user.id
 
     respond_to do |format|
       if @shop.save
@@ -41,23 +42,32 @@ class ShopsController < ApplicationController
   # PATCH/PUT /shops/1
   # PATCH/PUT /shops/1.json
   def update
-    respond_to do |format|
-      if @shop.update(shop_params)
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shop }
-      else
-        format.html { render :edit }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
+    if @shop.user_id == current_user.id
+      respond_to do |format|
+        if @shop.update(shop_params)
+          format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+          format.json { render :show, status: :ok, location: @shop }
+        else
+          format.html { render :edit }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to @shop, notice: "権限がありません"
     end
   end
 
   # DELETE /shops/1
   # DELETE /shops/1.json
   def destroy
-    @shop.destroy
+    if @shop.user_id == current_user.name
+        @shop.destroy
+      msg = "削除しました"
+    else
+      msg = "権限がありません"
+    end
     respond_to do |format|
-      format.html { redirect_to shops_url, notice: 'Shop was successfully destroyed.' }
+      format.html { redirect_to shops_url, notice: msg }
       format.json { head :no_content }
     end
   end

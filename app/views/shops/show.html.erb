@@ -29,5 +29,7 @@
 
 <br>
 <%= link_to 'Back', shops_path, class: "btn btn-default" %>
-<%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-success" %>
-<%= link_to "削除",@shop, method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger"  %>
+<% if user_signed_in? && @shop.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-success" %>
+  <%= link_to "削除",@shop, method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger"  %>
+<% end %>
