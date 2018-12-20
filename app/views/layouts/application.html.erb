@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lunchmap2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+<nav class='navbar navbar-inverse navbar-fixed-top'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>
+        <span class='sr-only'>Toggle navigation</span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+      <%= link_to "Lunch Map", root_path, class: "navbar-brand" %>
+    </div>
+    <div id='navbar' class='collapse navbar-collapse'>
+      <ul class='nav navbar-nav'>
+        <li><%= link_to "Shop", shops_path %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<% if user_signed_in? %>
+   Logged in as <strong><%= current_user.email %></strong>.
+   <%= link_to "Settings", edit_user_registration_path %> |
+   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+ <% else %>
+   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
+   <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
+ <% end %>
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
