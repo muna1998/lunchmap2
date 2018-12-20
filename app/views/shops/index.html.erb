@@ -15,7 +15,7 @@
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
-      
+  
         <td><%= link_to shop.category.name, shop, class: "widelink" %></td>
         <td><%= link_to shop.name, shop, class: "widelink" %></td>
         <td><%= link_to shop.address, shop, class: "widelink" %></td>
