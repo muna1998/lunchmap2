@@ -1,0 +1,60 @@
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
+  background-image: url("mokumeback.jpg");
+  height:630px;
+  width: "100%";
+
+  background-size:cover;
+
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* top-font */
+
+.top-font{
+  text-align: center;
+  padding: 150px;
+}
+
+.top h1{
+  font-size:60px;
+  color: #FFFFCC;
+  font-family: 'Nanum Pen Script', cursive;
+font-family: 'Cabin Sketch', cursive;
+}
+
+.top p{
+  font-size: 20px;
+  color: #FFFFCC;
+  padding-top: 20px;
+  font-family: 'Cabin Sketch', cursive;
+  font-family: 'Nanum Pen Script', cursive;
+}
+
+/* top-btn */
+
+.login{
+  margin-top: 180px;
+  margin-right: 10px;
+  padding: 15px 25px;
+}
+
+.sign_up{
+  margin-top: 180px;
+  margin-left: 10px;
+  padding: 15px 25px;
+}
