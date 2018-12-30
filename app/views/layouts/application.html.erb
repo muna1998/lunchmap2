@@ -21,12 +21,16 @@
         <span class='icon-bar'></span>
       </button>
       <%= link_to "Lunch Map", root_path, class: "navbar-brand" %>
+
     </div>
-    <div id='navbar' class='collapse navbar-collapse'>
-      <ul class='nav navbar-nav'>
-        <li><%= link_to "Shop", shops_path %></li>
-      </ul>
-    </div><!--/.nav-collapse -->
+      <% if current_user %>
+        <p class="navbar-text navbar-right">ようこそ <%= current_user.name %> さん。</p>
+      <% else %>
+          <p class="navbar-text navbar-right">ようこそ ゲスト さん。</p>
+      <% end %>
+
+      
+
   </div>
 </nav>
 <% if user_signed_in? %>

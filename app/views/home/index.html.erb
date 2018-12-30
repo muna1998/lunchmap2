@@ -16,10 +16,14 @@
           <h1>Lunch Map</h1>
           <p>Lunch Mapへようこそ</p>
 
+        <% if current_user %>
+          <%= link_to "お店一覧", shops_path,class: "shops_btn btn btn-info" %>
+        <% else %>
           <div class="top-btn">
             <%= link_to "ログイン", new_user_session_path, class: "login btn btn-success" %>
             <%= link_to "新規登録", new_user_registration_path, class: "sign_up btn btn-warning " %>
            </div>
+        <% end %>
         </div>
       </div>
     </div>
