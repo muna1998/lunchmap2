@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
 
   <body>
@@ -23,13 +24,29 @@
       <%= link_to "Lunch Map", root_path, class: "navbar-brand" %>
 
     </div>
+
+
       <% if current_user %>
-        <p class="navbar-text navbar-right">ようこそ <%= current_user.name %> さん。</p>
+        <p class="navbar-text">ようこそ <%= current_user.name %> さん。</p>
       <% else %>
-          <p class="navbar-text navbar-right">ようこそ ゲスト さん。</p>
+          <p class="navbar-text">ようこそ ゲスト さん。</p>
       <% end %>
 
-      
+      <div class="nav navbar-nav dropdown nav-btn-r">
+        <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bars nav-btn"></span></a>
+           <ul class="dropdown-menu dropdown-menu-right">
+             <li><%= link_to "お店一覧", shops_path %></li>
+             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+        </div>
+
+
+
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      <script>
+        $('.dropdown-toggle').dropdown()
+      </script>
 
   </div>
 </nav>

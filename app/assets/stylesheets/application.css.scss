@@ -14,3 +14,37 @@ a.widelink{
   height: 100%;
   text-decoration: none;
 }
+
+/* navbar */
+
+.nav-btn{
+  font-size:1.6em
+}
+
+
+.nav-btn-r{
+  position: relative;
+  left: 935px;
+  bottom: 1px;
+}
+
+.dropdown-menu{
+  background-color: #3C3C3C;
+  color: black;
+}
+
+.dropdown-menu li a{
+  color:#FFFFCC
+}
+
+.navbar-text{
+  position: relative;
+  left: 890px;
+  top: 1px;
+}
+
+.navbar-header{
+  position: relative;
+  right: 80px;
+  top: 1px;
+}
