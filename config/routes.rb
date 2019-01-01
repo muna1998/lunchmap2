@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/index'
+
   devise_for :users
+  resources :users, :only => [:index, :show]
   resources :shops
   resources :categories
   get 'home/index'
