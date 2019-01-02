@@ -13,9 +13,10 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
+  <div class="field circle-avatar">
+      <%= image_tag '/icon.jpg' %>
+      <%= f.hidden_field :avatar_cache %>
+      <%= f.file_field :avatar %>
   </div>
 
   <div class="field">

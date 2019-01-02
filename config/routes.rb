@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {
+  :registrations => 'users/registrations'
+}
+  post "users/edit(.:format)" => "users/registrations#destroy"
+
   resources :users, :only => [:index, :show]
   resources :shops
   resources :categories
