@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    @shops = Shop.all.order(created_at: :desc)
   end
 
   # GET /shops/1
@@ -45,7 +45,7 @@ class ShopsController < ApplicationController
     if @shop.user_id == current_user.id
       respond_to do |format|
         if @shop.update(shop_params)
-          format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+          format.html { redirect_to shops_path, notice: 'Shop was successfully updated.' }
           format.json { render :show, status: :ok, location: @shop }
         else
           format.html { render :edit }
@@ -80,6 +80,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:category_id, :name, :address, :user_id)
+      params.require(:shop).permit(:category_id, :name, :address, :user_id, :content, :image)
     end
 end

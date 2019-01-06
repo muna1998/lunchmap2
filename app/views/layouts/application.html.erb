@@ -21,13 +21,16 @@
         <span class='icon-bar'></span>
         <span class='icon-bar'></span>
       </button>
-      <%= link_to "Lunch Map", root_path, class: "navbar-brand" %>
-
+      <div class="top-icon">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <span class="fa fa-utensils">ぐるリポ</span>
+        <% end %>
+      </div>
     </div>
 
 
       <% if current_user %>
-        <p class="navbar-text">ようこそ <%= current_user.name %> さん。</p>
+        <p class="navbar-text">ようこそ <%= link_to current_user.name, "/users/:id(.:format)", style: "color: #9F9F9F;" %> さん。</p>
       <% else %>
           <p class="navbar-text">ようこそ ゲスト さん。</p>
       <% end %>
@@ -58,9 +61,7 @@
   </div>
 </nav>
 
-<% flash.each do |key, value| %>
-   <%= content_tag(:div, value, class: "#{key}") %>
- <% end %>
+
     <div class="container">
       <%= yield %>
     </div>

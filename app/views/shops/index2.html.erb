@@ -1,0 +1,29 @@
+
+
+<h1>Shops</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Store</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= link_to shop.user.name, shop, class: "widelink" %></td>
+        <td><%= link_to shop.category.name, shop, class: "widelink" %></td>
+        <td><%= link_to shop.name, shop, class: "widelink" %></td>
+        <td><%= link_to shop.address, shop, class: "widelink" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop', new_shop_path, class: "btn btn-primary" %>

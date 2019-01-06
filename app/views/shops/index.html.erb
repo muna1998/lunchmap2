@@ -1,29 +1,49 @@
+<!DOCTYPE html>
+  <head>
+    <%= stylesheet_link_tag "shops", :media => "all" %>
+  </head>
+  <body>
+    <div class="shop-flame">
+      <div class="container">
+        <% @shops.each do |shop| %>
+          <%= link_to shop, style: "text-decoration: none;" do %>
+          <div class="shop-list">
+            <span class="fa fa-utensils"></span>
+              <div class="shop-name">
+                <%= shop.name %>
+              </div>
+              <div class="temporary">
+                <%= shop.category.name%>/
+                <%= shop.address %>
+              </div>
+              <div class="time">
+                <%= l shop.created_at, format: :short %>
+              </div>
 
+              <div class="borderline">
+              </div>
+              <div class="image">
+                <%= image_tag shop.image.to_s %>
+              </div>
+              <div class="content">
+                <%= shop.content %>
+              </div>
+              <div class="icon">
+                <object><%= link_to "/users/:id(.:format)" do %>
+                  <%= image_tag current_user.avatar.to_s %>
+                <% end %></object>
+              </div>
+              <div class="name">
+                <object><%= link_to shop.user.name, "/users/:id(.:format)", :style=>"color: black;" %></object>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<h1>Shops</h1>
+    <br>
 
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Store</th>
-      <th>Address</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shops.each do |shop| %>
-      <tr>
-        <td><%= link_to shop.user.name, shop, class: "widelink" %></td>
-        <td><%= link_to shop.category.name, shop, class: "widelink" %></td>
-        <td><%= link_to shop.name, shop, class: "widelink" %></td>
-        <td><%= link_to shop.address, shop, class: "widelink" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Shop', new_shop_path, class: "btn btn-primary" %>
+    <%= link_to 'New Shop', new_shop_path, class: "btn btn-primary" %>
+  </body>
+</html>

@@ -1,44 +1,85 @@
-<%= form_with(model: shop, local: true, html: {class: "form-horizontal", role: "form"}) do |form| %>
-  <% if shop.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+<!DOCTYPE html>
+  <head>
+    <%= stylesheet_link_tag "shops", :media => "all" %>
+  </head>
+  <body>
+    <%= form_with(model: shop, local: true, html: {class: "form-horizontal", role: "form"}) do |form| %>
+      <% if shop.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
 
-      <ul>
-      <% shop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  
 
-  <div class="form-group">
-    <%= form.label :category_id, class: "col-sm-1 control-label" %>
-    <div class="col-sm-11">
-      <%= form.select :category_id, Category.all.map{|o| [o.name, o.id]} %>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :name, class: "col-sm-1 control-label" %>
-    <div class="col-sm-11">
-      <%= form.text_field :name %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :address, class: "col-sm-1 control-label" %>
-    <div class="col-sm-11">
-      <%= form.text_field :address %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-12">
-        <%= form.submit "投稿", class: "btn btn-success"%>
+      <div class="form-group">
+        <%= form.label :category_id, class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= form.select :category_id, Category.all.map{|o| [o.name, o.id]} %>
+        </div>
       </div>
-    </div>
-  </div>
-<% end %>
+
+      <div class="form-group">
+        <%= form.label :name, class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= form.text_field :name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :address, class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= form.text_field :address %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :content, class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= form.text_area :content, :size=>"50x8" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <img id="avatar_img_prev" src="#" class='hidden' />
+        <%= form.label :image, class: "col-sm-1 control-label" %>
+        <%= image_tag shop.image.to_s, class: 'avatar_present_img' %>
+        <%= form.file_field :image, id: 'post_img' %>
+      </div>
+      <script>
+        $( document ).on('turbolinks:load', function() {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            $('#avatar_img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      $("#post_img").change(function(){
+        $('#avatar_img_prev').removeClass('hidden');
+        $('.avatar_present_img').remove();
+        readURL(this);
+      });
+    });
+      </script>
+
+      <div class="actions">
+        <div class="form-group">
+          <div class="col-sm-offset-1 col-sm-12">
+            <%= form.submit "投稿", class: "btn btn-success"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </body>
+</html>

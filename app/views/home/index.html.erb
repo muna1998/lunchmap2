@@ -13,8 +13,10 @@
     <div class="top">
       <div class="container">
         <div class="top-font">
-          <h1>Lunch Map</h1>
-          <p>Lunch Mapへようこそ</p>
+          <%= link_to shops_path, style: "text-decoration: none;" do%>
+            <h1>Gourmet Report</h1>
+            <p>Gourmet Reportへようこそ</p>
+          <% end %>
 
         <% if current_user %>
           <%= link_to "お店一覧", shops_path,class: "shops_btn btn btn-info" %>

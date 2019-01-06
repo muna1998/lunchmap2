@@ -1,3 +1,131 @@
-// Place all the styles related to the shops controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  width: auto;
+  height: 100%;
+  background-color: #FFFAFA;
+}
+/* index */
+.shop-list{
+    width: 800px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    padding: auto;
+    border-top: solid 2px #E0E0E0;
+}
+
+.shop-list:hover{
+  background-color: #F8F8F8;
+  .shop-name{
+    color: #FFCC00;
+  }
+  .image{
+      border: solid 1px #FFCC00;
+  }
+}
+
+.icon img{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.icon{
+  position: relative;
+  top: 97px;
+  display: inline-block;
+}
+
+.name{
+  width: 57px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: 0px;
+  position: relative;
+  right: 7px;
+  bottom: 7px;
+  color: black;
+  font-family: 'arial unicode ms';
+}
+
+.shop-name{
+  width: 110px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  font-size: 23px;
+  top: 4px;
+  left: 15px;
+  color: black;
+  font-family: 'arial unicode ms';
+}
+
+.temporary{
+  color: #969696;
+  position: relative;
+  left:10px;
+  display: inline-block;
+}
+
+.fa-utensils{
+  position: relative;
+  left: 7px;
+  top: 2px;
+  color: #9F9F9F;
+  font-size: 1.3em;
+
+}
+
+.borderline{
+  width: 100%;
+  border-bottom: solid 2px #E0E0E0;
+  position: relative;
+  bottom: 6px;
+  display: inline-block;
+}
+
+.time{
+  display: inline-block;
+  position: relative;
+  float: right;
+  right:5px;
+  top: 15px;
+  color: #969696;
+}
+
+.content{
+  width: 500px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  color: #5F5F5F;
+}
+
+.image img{
+  width: 160px;
+  height: 160px;
+  display: inline-block;
+  position: relative;
+  left: 6px;
+  top: 6px;
+}
+
+.image{
+  width: 175px;
+  height: 175px;
+  margin-left: 20px;
+  display: inline-block;
+  border: solid 1px #E0E0E0;
+}
+
+
+
+/* form */
+
+.form-group img{
+  width: 200px;
+  height: 200px;
+  margin-left: 15px;
+  border-radius: 25px;
+}
