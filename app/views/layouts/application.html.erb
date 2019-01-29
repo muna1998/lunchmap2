@@ -30,10 +30,12 @@
 
 
       <% if current_user %>
-        <p class="navbar-text">ようこそ <%= link_to current_user.name, "/users/:id(.:format)", style: "color: #9F9F9F;" %> さん。</p>
+        <p class="navbar-text">ようこそ <%= link_to current_user.name, "/users/#{current_user.id}", style: "color: #9F9F9F;" %> さん。</p>
       <% else %>
           <p class="navbar-text">ようこそ ゲスト さん。</p>
       <% end %>
+
+      <%= link_to 'レポート', new_shop_path, class: "btn btn-warning new-btn" %>
 
       <div class="nav navbar-nav dropdown nav-btn-r">
         <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bars nav-btn"></span></a>
@@ -42,7 +44,7 @@
              <% if current_user %>
                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                <li><%= link_to "アカウント編集", edit_user_registration_path %></li>
-               <li><%= link_to "プロフィール", "/users/:id(.:format)" %></li>
+               <li><%= link_to "プロフィール", "/users/#{current_user.id}" %></li>
               <% else %>
               <li><%= link_to "ログイン", new_user_session_path %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>

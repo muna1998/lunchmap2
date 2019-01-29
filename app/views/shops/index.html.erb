@@ -29,12 +29,16 @@
                 <%= shop.content %>
               </div>
               <div class="icon">
-                <object><%= link_to "/users/:id(.:format)" do %>
-                  <%= image_tag current_user.avatar.to_s %>
+                <object><%= link_to "/users/#{shop.user.id}" do %>
+                  <% if shop.user.persisted? && shop.user.avatar? %>
+                    <%= image_tag shop.user.avatar.to_s %>
+                  <% else %>
+                      <%= image_tag "/icon.jpg" %>
+                  <% end %>
                 <% end %></object>
               </div>
               <div class="name">
-                <object><%= link_to shop.user.name, "/users/:id(.:format)", :style=>"color: black;" %></object>
+                <object><%= link_to shop.user.name, "/users/#{shop.user.id}", :style=>"color: black;" %></object>
               </div>
           </div>
           <% end %>
@@ -44,6 +48,6 @@
 
     <br>
 
-    <%= link_to 'New Shop', new_shop_path, class: "btn btn-primary" %>
+    
   </body>
 </html>
